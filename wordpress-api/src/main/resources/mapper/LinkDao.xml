@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ihowq.wordpress.api.dao.LinkDao">
+    <resultMap id="BaseResultMap" type="com.ihowq.wordpress.api.model.pojo.link.Link">
+        <id column="link_id" jdbcType="BIGINT" property="linkId"/>
+        <result column="link_url" jdbcType="VARCHAR" property="linkUrl"/>
+        <result column="link_name" jdbcType="VARCHAR" property="linkName"/>
+        <result column="link_image" jdbcType="VARCHAR" property="linkImage"/>
+        <result column="link_target" jdbcType="VARCHAR" property="linkTarget"/>
+        <result column="link_description" jdbcType="VARCHAR" property="linkDescription"/>
+        <result column="link_visible" jdbcType="VARCHAR" property="linkVisible"/>
+        <result column="link_owner" jdbcType="BIGINT" property="linkOwner"/>
+        <result column="link_rating" jdbcType="INTEGER" property="linkRating"/>
+        <result column="link_updated" jdbcType="TIMESTAMP" property="linkUpdated"/>
+        <result column="link_rel" jdbcType="VARCHAR" property="linkRel"/>
+        <result column="link_rss" jdbcType="VARCHAR" property="linkRss"/>
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ihowq.wordpress.api.model.pojo.link.Link">
+        <result column="link_notes" jdbcType="LONGVARCHAR" property="linkNotes"/>
+    </resultMap>
+    <sql id="Query_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Query_Where_Clause">
+        <where>
+            <foreach collection="query.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        link_id, link_url, link_name, link_image, link_target, link_description, link_visible,
+        link_owner, link_rating, link_updated, link_rel, link_rss
+    </sql>
+    <sql id="Blob_Column_List">
+        link_notes
+    </sql>
+    <select id="selectByQueryWithBLOBs" parameterType="com.ihowq.wordpress.api.model.pojo.link.LinkQuery"
+            resultMap="ResultMapWithBLOBs">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from wp_links
+        <if test="_parameter != null">
+            <include refid="Query_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByQuery" parameterType="com.ihowq.wordpress.api.model.pojo.link.LinkQuery"
+            resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from wp_links
+        <if test="_parameter != null">
+            <include refid="Query_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+        <if test="limit != null">
+            <if test="offset != null">
+                limit ${offset}, ${limit}
+            </if>
+            <if test="offset == null">
+                limit ${limit}
+            </if>
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from wp_links
+        where link_id = #{linkId,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from wp_links
+        where link_id = #{linkId,jdbcType=BIGINT}
+    </delete>
+    <delete id="deleteByQuery" parameterType="com.ihowq.wordpress.api.model.pojo.link.LinkQuery">
+        delete from wp_links
+        <if test="_parameter != null">
+            <include refid="Query_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.ihowq.wordpress.api.model.pojo.link.Link">
+        insert into wp_links (link_id, link_url, link_name,
+        link_image, link_target, link_description,
+        link_visible, link_owner, link_rating,
+        link_updated, link_rel, link_rss,
+        link_notes)
+        values (#{linkId,jdbcType=BIGINT}, #{linkUrl,jdbcType=VARCHAR}, #{linkName,jdbcType=VARCHAR},
+        #{linkImage,jdbcType=VARCHAR}, #{linkTarget,jdbcType=VARCHAR}, #{linkDescription,jdbcType=VARCHAR},
+        #{linkVisible,jdbcType=VARCHAR}, #{linkOwner,jdbcType=BIGINT}, #{linkRating,jdbcType=INTEGER},
+        #{linkUpdated,jdbcType=TIMESTAMP}, #{linkRel,jdbcType=VARCHAR}, #{linkRss,jdbcType=VARCHAR},
+        #{linkNotes,jdbcType=LONGVARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.ihowq.wordpress.api.model.pojo.link.Link">
+        insert into wp_links
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="linkId != null">
+                link_id,
+            </if>
+            <if test="linkUrl != null">
+                link_url,
+            </if>
+            <if test="linkName != null">
+                link_name,
+            </if>
+            <if test="linkImage != null">
+                link_image,
+            </if>
+            <if test="linkTarget != null">
+                link_target,
+            </if>
+            <if test="linkDescription != null">
+                link_description,
+            </if>
+            <if test="linkVisible != null">
+                link_visible,
+            </if>
+            <if test="linkOwner != null">
+                link_owner,
+            </if>
+            <if test="linkRating != null">
+                link_rating,
+            </if>
+            <if test="linkUpdated != null">
+                link_updated,
+            </if>
+            <if test="linkRel != null">
+                link_rel,
+            </if>
+            <if test="linkRss != null">
+                link_rss,
+            </if>
+            <if test="linkNotes != null">
+                link_notes,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="linkId != null">
+                #{linkId,jdbcType=BIGINT},
+            </if>
+            <if test="linkUrl != null">
+                #{linkUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="linkName != null">
+                #{linkName,jdbcType=VARCHAR},
+            </if>
+            <if test="linkImage != null">
+                #{linkImage,jdbcType=VARCHAR},
+            </if>
+            <if test="linkTarget != null">
+                #{linkTarget,jdbcType=VARCHAR},
+            </if>
+            <if test="linkDescription != null">
+                #{linkDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="linkVisible != null">
+                #{linkVisible,jdbcType=VARCHAR},
+            </if>
+            <if test="linkOwner != null">
+                #{linkOwner,jdbcType=BIGINT},
+            </if>
+            <if test="linkRating != null">
+                #{linkRating,jdbcType=INTEGER},
+            </if>
+            <if test="linkUpdated != null">
+                #{linkUpdated,jdbcType=TIMESTAMP},
+            </if>
+            <if test="linkRel != null">
+                #{linkRel,jdbcType=VARCHAR},
+            </if>
+            <if test="linkRss != null">
+                #{linkRss,jdbcType=VARCHAR},
+            </if>
+            <if test="linkNotes != null">
+                #{linkNotes,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByQuery" parameterType="com.ihowq.wordpress.api.model.pojo.link.LinkQuery"
+            resultType="java.lang.Long">
+        select count(*) from wp_links
+        <if test="_parameter != null">
+            <include refid="Query_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByQuerySelective" parameterType="map">
+        update wp_links
+        <set>
+            <if test="record.linkId != null">
+                link_id = #{record.linkId,jdbcType=BIGINT},
+            </if>
+            <if test="record.linkUrl != null">
+                link_url = #{record.linkUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="record.linkName != null">
+                link_name = #{record.linkName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.linkImage != null">
+                link_image = #{record.linkImage,jdbcType=VARCHAR},
+            </if>
+            <if test="record.linkTarget != null">
+                link_target = #{record.linkTarget,jdbcType=VARCHAR},
+            </if>
+            <if test="record.linkDescription != null">
+                link_description = #{record.linkDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="record.linkVisible != null">
+                link_visible = #{record.linkVisible,jdbcType=VARCHAR},
+            </if>
+            <if test="record.linkOwner != null">
+                link_owner = #{record.linkOwner,jdbcType=BIGINT},
+            </if>
+            <if test="record.linkRating != null">
+                link_rating = #{record.linkRating,jdbcType=INTEGER},
+            </if>
+            <if test="record.linkUpdated != null">
+                link_updated = #{record.linkUpdated,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.linkRel != null">
+                link_rel = #{record.linkRel,jdbcType=VARCHAR},
+            </if>
+            <if test="record.linkRss != null">
+                link_rss = #{record.linkRss,jdbcType=VARCHAR},
+            </if>
+            <if test="record.linkNotes != null">
+                link_notes = #{record.linkNotes,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Query_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByQueryWithBLOBs" parameterType="map">
+        update wp_links
+        set link_id = #{record.linkId,jdbcType=BIGINT},
+        link_url = #{record.linkUrl,jdbcType=VARCHAR},
+        link_name = #{record.linkName,jdbcType=VARCHAR},
+        link_image = #{record.linkImage,jdbcType=VARCHAR},
+        link_target = #{record.linkTarget,jdbcType=VARCHAR},
+        link_description = #{record.linkDescription,jdbcType=VARCHAR},
+        link_visible = #{record.linkVisible,jdbcType=VARCHAR},
+        link_owner = #{record.linkOwner,jdbcType=BIGINT},
+        link_rating = #{record.linkRating,jdbcType=INTEGER},
+        link_updated = #{record.linkUpdated,jdbcType=TIMESTAMP},
+        link_rel = #{record.linkRel,jdbcType=VARCHAR},
+        link_rss = #{record.linkRss,jdbcType=VARCHAR},
+        link_notes = #{record.linkNotes,jdbcType=LONGVARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Query_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByQuery" parameterType="map">
+        update wp_links
+        set link_id = #{record.linkId,jdbcType=BIGINT},
+        link_url = #{record.linkUrl,jdbcType=VARCHAR},
+        link_name = #{record.linkName,jdbcType=VARCHAR},
+        link_image = #{record.linkImage,jdbcType=VARCHAR},
+        link_target = #{record.linkTarget,jdbcType=VARCHAR},
+        link_description = #{record.linkDescription,jdbcType=VARCHAR},
+        link_visible = #{record.linkVisible,jdbcType=VARCHAR},
+        link_owner = #{record.linkOwner,jdbcType=BIGINT},
+        link_rating = #{record.linkRating,jdbcType=INTEGER},
+        link_updated = #{record.linkUpdated,jdbcType=TIMESTAMP},
+        link_rel = #{record.linkRel,jdbcType=VARCHAR},
+        link_rss = #{record.linkRss,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Query_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.ihowq.wordpress.api.model.pojo.link.Link">
+        update wp_links
+        <set>
+            <if test="linkUrl != null">
+                link_url = #{linkUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="linkName != null">
+                link_name = #{linkName,jdbcType=VARCHAR},
+            </if>
+            <if test="linkImage != null">
+                link_image = #{linkImage,jdbcType=VARCHAR},
+            </if>
+            <if test="linkTarget != null">
+                link_target = #{linkTarget,jdbcType=VARCHAR},
+            </if>
+            <if test="linkDescription != null">
+                link_description = #{linkDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="linkVisible != null">
+                link_visible = #{linkVisible,jdbcType=VARCHAR},
+            </if>
+            <if test="linkOwner != null">
+                link_owner = #{linkOwner,jdbcType=BIGINT},
+            </if>
+            <if test="linkRating != null">
+                link_rating = #{linkRating,jdbcType=INTEGER},
+            </if>
+            <if test="linkUpdated != null">
+                link_updated = #{linkUpdated,jdbcType=TIMESTAMP},
+            </if>
+            <if test="linkRel != null">
+                link_rel = #{linkRel,jdbcType=VARCHAR},
+            </if>
+            <if test="linkRss != null">
+                link_rss = #{linkRss,jdbcType=VARCHAR},
+            </if>
+            <if test="linkNotes != null">
+                link_notes = #{linkNotes,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where link_id = #{linkId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ihowq.wordpress.api.model.pojo.link.Link">
+        update wp_links
+        set link_url = #{linkUrl,jdbcType=VARCHAR},
+        link_name = #{linkName,jdbcType=VARCHAR},
+        link_image = #{linkImage,jdbcType=VARCHAR},
+        link_target = #{linkTarget,jdbcType=VARCHAR},
+        link_description = #{linkDescription,jdbcType=VARCHAR},
+        link_visible = #{linkVisible,jdbcType=VARCHAR},
+        link_owner = #{linkOwner,jdbcType=BIGINT},
+        link_rating = #{linkRating,jdbcType=INTEGER},
+        link_updated = #{linkUpdated,jdbcType=TIMESTAMP},
+        link_rel = #{linkRel,jdbcType=VARCHAR},
+        link_rss = #{linkRss,jdbcType=VARCHAR},
+        link_notes = #{linkNotes,jdbcType=LONGVARCHAR}
+        where link_id = #{linkId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.ihowq.wordpress.api.model.pojo.link.Link">
+        update wp_links
+        set link_url = #{linkUrl,jdbcType=VARCHAR},
+        link_name = #{linkName,jdbcType=VARCHAR},
+        link_image = #{linkImage,jdbcType=VARCHAR},
+        link_target = #{linkTarget,jdbcType=VARCHAR},
+        link_description = #{linkDescription,jdbcType=VARCHAR},
+        link_visible = #{linkVisible,jdbcType=VARCHAR},
+        link_owner = #{linkOwner,jdbcType=BIGINT},
+        link_rating = #{linkRating,jdbcType=INTEGER},
+        link_updated = #{linkUpdated,jdbcType=TIMESTAMP},
+        link_rel = #{linkRel,jdbcType=VARCHAR},
+        link_rss = #{linkRss,jdbcType=VARCHAR}
+        where link_id = #{linkId,jdbcType=BIGINT}
+    </update>
+</mapper>

@@ -1,4 +1,4 @@
-package com.ihowq.framework.sso;
+package com.ihowq.wordpress.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

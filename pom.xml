@@ -383,6 +383,7 @@
     <modules>
         <module>framework-common</module>
         <module>framework-sso</module>
+        <module>wordpress-api</module>
     </modules>
 
 </project>
