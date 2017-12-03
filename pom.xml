@@ -18,7 +18,7 @@
         <!-- Self dependency -->
         <ihowq.self.version>1.0.0-SNAPSHOT</ihowq.self.version>
         <!-- Normal dependency -->
-        <spring.version>5.0.2.RELEASE</spring.version>
+        <spring.version>4.3.13.RELEASE</spring.version>
         <aopalliance.version>1.0</aopalliance.version>
         <aspectjweaver.version>1.8.5</aspectjweaver.version>
 
@@ -45,13 +45,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>1.5.9.RELEASE</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
             <!-- Self dependency -->
             <dependency>
                 <groupId>com.ihowq.framework</groupId>
