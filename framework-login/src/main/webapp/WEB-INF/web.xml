@@ -78,7 +78,7 @@
     <!-- 防止CSRF、XSS攻击 -->
     <filter>
         <filter-name>XssFilter</filter-name>
-        <filter-class>org.bymarx.framework.login.filter.XSSFilter</filter-class>
+        <filter-class>com.ihowq.framework.login.filter.XSSFilter</filter-class>
     </filter>
 
     <filter-mapping>

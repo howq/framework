@@ -1,4 +1,4 @@
-package org.bymarx.framework;
+package com.ihowq.framework;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.bymarx.framework</groupId>
+    <groupId>com.ihowq.framework</groupId>
     <artifactId>framework-core</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -16,7 +16,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- Self dependency -->
-        <bymarx.self.version>1.0.0-SNAPSHOT</bymarx.self.version>
+        <ihowq.self.version>1.0.0-SNAPSHOT</ihowq.self.version>
         <!-- Normal dependency -->
         <spring.version>4.1.2.RELEASE</spring.version>
         <aopalliance.version>1.0</aopalliance.version>
@@ -47,14 +47,14 @@
         <dependencies>
             <!-- Self dependency -->
             <dependency>
-                <groupId>org.bymarx.framework</groupId>
+                <groupId>com.ihowq.framework</groupId>
                 <artifactId>framework-common</artifactId>
-                <version>${bymarx.self.version}</version>
+                <version>${ihowq.self.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.bymarx.framework</groupId>
+                <groupId>com.ihowq.framework</groupId>
                 <artifactId>framework-sso</artifactId>
-                <version>${bymarx.self.version}</version>
+                <version>${ihowq.self.version}</version>
             </dependency>
             <!-- Normal dependency -->
             <dependency>
@@ -368,10 +368,13 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.12.4</version>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
                 <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                     <skip>true</skip>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
         </plugins>

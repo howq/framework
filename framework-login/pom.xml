@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.bymarx.framework</groupId>
+        <groupId>com.ihowq.framework</groupId>
         <artifactId>framework-core</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>org.bymarx.framework</groupId>
+    <groupId>com.ihowq.framework</groupId>
     <artifactId>framework-login</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
@@ -19,9 +19,9 @@
     <dependencies>
 
         <dependency>
-            <groupId>org.bymarx.framework</groupId>
+            <groupId>com.ihowq.framework</groupId>
             <artifactId>framework-common</artifactId>
-            <version>${bymarx.self.version}</version>
+            <version>${ihowq.self.version}</version>
         </dependency>
 
         <!-- ============apring MVC=============== -->
