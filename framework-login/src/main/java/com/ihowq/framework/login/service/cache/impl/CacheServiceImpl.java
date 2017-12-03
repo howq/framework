@@ -1,7 +1,7 @@
 package com.ihowq.framework.login.service.cache.impl;
 
 
-import com.ihowq.framework.common.cache.impl.RedisCacheService;
+import com.ihowq.framework.common.cache.IRedisCacheService;
 import com.ihowq.framework.common.util.Result;
 import com.ihowq.framework.common.util.ValSystemException;
 import com.ihowq.framework.login.service.cache.CacheService;
@@ -25,7 +25,7 @@ public class CacheServiceImpl implements CacheService {
     private static final Logger logger = LoggerFactory.getLogger(CacheServiceImpl.class);
 
     @Resource(name = "redisCacheService")
-    private RedisCacheService redisCacheService;
+    private IRedisCacheService redisCacheService;
 
     @Override
     public void setCustLoginSession(CustLoginSession session) {

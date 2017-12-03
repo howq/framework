@@ -162,4 +162,26 @@ public class UserDO {
     public void setDeleteflg(String deleteflg) {
         this.deleteflg = deleteflg == null ? null : deleteflg.trim();
     }
+
+    @Override
+    public String toString() {
+        return "UserDO{" +
+                "userid='" + userid + '\'' +
+                ", roleid=" + roleid +
+                ", password='" + password + '\'' +
+                ", logindatetimetime=" + logindatetimetime +
+                ", logoutdatetimetime=" + logoutdatetimetime +
+                ", userstatus='" + userstatus + '\'' +
+                ", sessionid='" + sessionid + '\'' +
+                ", ipadd='" + ipadd + '\'' +
+                ", blowser='" + blowser + '\'' +
+                ", creater='" + creater + '\'' +
+                ", creatdatetime=" + creatdatetime +
+                ", changer='" + changer + '\'' +
+                ", changedatetime=" + changedatetime +
+                ", deleteman='" + deleteman + '\'' +
+                ", deletedatetime=" + deletedatetime +
+                ", deleteflg='" + deleteflg + '\'' +
+                '}';
+    }
 }

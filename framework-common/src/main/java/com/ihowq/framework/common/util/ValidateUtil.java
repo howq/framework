@@ -218,7 +218,7 @@ public class ValidateUtil {
      * @param str
      * @return date
      */
-    public static Date StrToDate(String str) {
+    public static Date strToDate(String str) {
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date = null;

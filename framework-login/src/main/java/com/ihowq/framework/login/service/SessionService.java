@@ -46,7 +46,7 @@ public class SessionService {
         AtomicInteger requestCount = new AtomicInteger(0);
         loginSession.setRequestCount(requestCount);
 
-        if (rememberMe.equals("on")) {
+        if ("on".equals(rememberMe)) {
             cookieAge = 60 * 60 * 24 * 30;
         }
 

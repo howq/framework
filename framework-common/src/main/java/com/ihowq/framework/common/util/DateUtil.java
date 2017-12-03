@@ -90,7 +90,6 @@ public class DateUtil {
 	public static int getMonth(Date date) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
-		//cal.add(Calendar.MONTH, 1);
 		Object day = cal.get(Calendar.MONTH);
 		if (day != null) {
 			return Integer.valueOf(day.toString())+1;
@@ -251,8 +250,8 @@ public class DateUtil {
 		calClearDate.setTime(date);
 		calClearDate.set(Calendar.DATE, 1);
 		date = calClearDate.getTime();
-		Map<String, Object> map = new HashMap<String, Object>();
-		// SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+        Map<String, Object> map = new HashMap<String, Object>(3);
+        // SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
 		cal.set(Calendar.HOUR_OF_DAY, 0);
