@@ -9,9 +9,24 @@ import java.io.Serializable;
  */
 public class Term implements Serializable {
     private static final long serialVersionUID = -2018230385861801163L;
+    /**
+     * 分类ID
+     */
     private Long termId;
+
+    /**
+     * 分类名
+     */
     private String name;
+
+    /**
+     * 缩略名
+     */
     private String slug;
+
+    /**
+     * 分类组别
+     */
     private Long termGroup;
 
     /**

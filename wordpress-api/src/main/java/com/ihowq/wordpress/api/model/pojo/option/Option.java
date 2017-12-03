@@ -9,9 +9,24 @@ import java.io.Serializable;
  */
 public class Option implements Serializable {
     private static final long serialVersionUID = -385039858702206366L;
+    /**
+     * 自增唯一ID
+     */
     private Long optionId;
+
+    /**
+     * 键名
+     */
     private String optionName;
+
+    /**
+     * 在WordPress载入时自动载入（yes/no）
+     */
     private String autoload;
+
+    /**
+     * 键值
+     */
     private String optionValue;
 
     /**

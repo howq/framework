@@ -9,9 +9,24 @@ import java.io.Serializable;
  */
 public class PostMeta implements Serializable {
     private static final long serialVersionUID = -3927222807591106496L;
+    /**
+     * 自增唯一ID
+     */
     private Long metaId;
+
+    /**
+     * 对应文章ID
+     */
     private Long postId;
+
+    /**
+     * 键名
+     */
     private String metaKey;
+
+    /**
+     * 键值
+     */
     private String metaValue;
 
     /**

@@ -10,22 +10,86 @@ import java.util.Date;
  */
 public class Post implements Serializable {
     private static final long serialVersionUID = -2416545440652139280L;
+    /**
+     * 自增唯一ID
+     */
     private Long id;
+
+    /**
+     * 对应作者ID
+     */
     private Long postAuthor;
+
+    /**
+     * 发布时间
+     */
     private Date postDate;
+
+    /**
+     * 发布时间（GMT+0时间）
+     */
     private Date postDateGmt;
+
+    /**
+     * 文章状态（publish/auto-draft/inherit等）
+     */
     private String postStatus;
+
+    /**
+     * 评论状态（open/closed）
+     */
     private String commentStatus;
+
+    /**
+     * PING状态（open/closed）
+     */
     private String pingStatus;
+
+    /**
+     * 文章密码
+     */
     private String postPassword;
+
+    /**
+     * 文章缩略名
+     */
     private String postName;
+
+    /**
+     * 修改时间
+     */
     private Date postModified;
+
+    /**
+     * 修改时间（GMT+0时间）
+     */
     private Date postModifiedGmt;
+
+    /**
+     * 父文章，主要用于PAGE
+     */
     private Long postParent;
+
     private String guid;
+
+    /**
+     * 排序ID
+     */
     private Integer menuOrder;
+
+    /**
+     * 文章类型（post/page等）
+     */
     private String postType;
+
+    /**
+     * MIME类型
+     */
     private String postMimeType;
+
+    /**
+     * 评论总数
+     */
     private Long commentCount;
 
     /**

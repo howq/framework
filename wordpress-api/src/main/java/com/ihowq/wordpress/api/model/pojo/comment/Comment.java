@@ -10,20 +10,76 @@ import java.util.Date;
  */
 public class Comment implements Serializable {
     private static final long serialVersionUID = -7205948277806818407L;
+    /**
+     * 自增唯一ID
+     */
     private Long commentId;
+
+    /**
+     * 对应文章ID
+     */
     private Long commentPostId;
+
+    /**
+     * 评论者
+     */
     private String commentAuthor;
+
+    /**
+     * 评论者邮箱
+     */
     private String commentAuthorEmail;
+
+    /**
+     * 评论者网址
+     */
     private String commentAuthorUrl;
+
+    /**
+     * 评论者IP
+     */
     private String commentAuthorIp;
+
+    /**
+     * 评论时间
+     */
     private Date commentDate;
+
+    /**
+     * 评论时间（GMT+0时间）
+     */
     private Date commentDateGmt;
+
     private Integer commentKarma;
+
+    /**
+     * 评论是否被批准
+     */
     private String commentApproved;
+
+    /**
+     * 评论者的USER AGENT
+     */
     private String commentAgent;
+
+    /**
+     * 评论类型(pingback/普通)
+     */
     private String commentType;
+
+    /**
+     * 父评论ID
+     */
     private Long commentParent;
+
+    /**
+     * 评论者用户ID（不一定存在）
+     */
     private Long userId;
+
+    /**
+     * 评论正文
+     */
     private String commentContent;
 
     /**

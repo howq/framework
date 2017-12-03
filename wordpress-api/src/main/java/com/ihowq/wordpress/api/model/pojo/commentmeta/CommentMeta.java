@@ -9,9 +9,24 @@ import java.io.Serializable;
  */
 public class CommentMeta implements Serializable {
     private static final long serialVersionUID = -1842995388921912775L;
+    /**
+     * 自增唯一ID
+     */
     private Long metaId;
+
+    /**
+     * 对应评论ID
+     */
     private Long commentId;
+
+    /**
+     * 键名
+     */
     private String metaKey;
+
+    /**
+     * 键值
+     */
     private String metaValue;
 
     /**

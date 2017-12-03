@@ -10,18 +10,66 @@ import java.util.Date;
  */
 public class Link implements Serializable {
     private static final long serialVersionUID = 8770001609421904493L;
+    /**
+     * 自增唯一ID
+     */
     private Long linkId;
+
+    /**
+     * 链接URL
+     */
     private String linkUrl;
+
+    /**
+     * 链接标题
+     */
     private String linkName;
+
+    /**
+     * 链接图片
+     */
     private String linkImage;
+
+    /**
+     * 链接打开方式
+     */
     private String linkTarget;
+
+    /**
+     * 链接描述
+     */
     private String linkDescription;
+
+    /**
+     * 是否可见（Y/N）
+     */
     private String linkVisible;
+
+    /**
+     * 添加者用户ID
+     */
     private Long linkOwner;
+
+    /**
+     * 评分等级
+     */
     private Integer linkRating;
+
     private Date linkUpdated;
+
+    /**
+     * XFN关系
+     */
     private String linkRel;
+
+    /**
+     * 链接RSS地址
+     */
     private String linkRss;
+
+    /**
+     * XFN注释
+     */
     private String linkNotes;
 
     /**

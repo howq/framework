@@ -10,15 +10,54 @@ import java.util.Date;
  */
 public class User implements Serializable {
     private static final long serialVersionUID = 5106601631364474666L;
+    /**
+     * 自增唯一ID
+     */
     private Long id;
+
+    /**
+     * 登录名
+     */
     private String userLogin;
+
+    /**
+     * 密码
+     */
     private String userPass;
+
+    /**
+     * 昵称
+     */
     private String userNicename;
+
+    /**
+     * Email
+     */
     private String userEmail;
+
+    /**
+     * 网址
+     */
     private String userUrl;
+
+    /**
+     * 注册时间
+     */
     private Date userRegistered;
+
+    /**
+     * 激活码
+     */
     private String userActivationKey;
+
+    /**
+     * 用户状态
+     */
     private Integer userStatus;
+
+    /**
+     * 用户显示名称
+     */
     private String displayName;
 
     /**

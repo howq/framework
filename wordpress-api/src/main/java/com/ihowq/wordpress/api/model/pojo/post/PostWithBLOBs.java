@@ -9,11 +9,28 @@ import java.io.Serializable;
  */
 public class PostWithBLOBs extends Post implements Serializable {
     private static final long serialVersionUID = -7679716008217072709L;
+    /**
+     * 正文
+     */
     private String postContent;
+
+    /**
+     * 标题
+     */
     private String postTitle;
+
+    /**
+     * 摘录
+     */
     private String postExcerpt;
+
     private String toPing;
+
+    /**
+     * 已经PING过的链接
+     */
     private String pinged;
+
     private String postContentFiltered;
 
     /**

@@ -9,12 +9,36 @@ import java.io.Serializable;
  */
 public class TermTaxonomy implements Serializable {
     private static final long serialVersionUID = 5298365657367239307L;
+    /**
+     * 分类方法ID
+     */
     private Long termTaxonomyId;
+
+    /**
+     * 分类方法(category/post_tag)
+     */
     private Long termId;
+
+    /**
+     * 描述
+     */
     private String taxonomy;
+
+    /**
+     * 所属父分类方法ID
+     */
     private Long parent;
+
+    /**
+     * 文章数统计
+     */
     private Long count;
+
+    /**
+     * 排序
+     */
     private String description;
+
 
     /**
      * Gets term taxonomy id.

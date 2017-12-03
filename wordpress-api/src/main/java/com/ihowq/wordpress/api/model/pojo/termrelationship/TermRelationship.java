@@ -7,6 +7,9 @@ import java.io.Serializable;
  */
 public class TermRelationship extends TermRelationshipKey implements Serializable {
     private static final long serialVersionUID = -6502647987101044286L;
+    /**
+     * 排序
+     */
     private Integer termOrder;
 
     /**

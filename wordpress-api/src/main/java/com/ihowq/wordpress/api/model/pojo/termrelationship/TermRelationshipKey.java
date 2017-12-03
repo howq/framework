@@ -9,7 +9,14 @@ import java.io.Serializable;
  */
 public class TermRelationshipKey implements Serializable {
     private static final long serialVersionUID = -1406813415019981506L;
+    /**
+     * 对应文章ID/链接ID
+     */
     private Long objectId;
+
+    /**
+     * 对应分类方法ID
+     */
     private Long termTaxonomyId;
 
     /**

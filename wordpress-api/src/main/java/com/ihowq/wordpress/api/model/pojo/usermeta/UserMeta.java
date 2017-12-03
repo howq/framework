@@ -9,9 +9,24 @@ import java.io.Serializable;
  */
 public class UserMeta implements Serializable {
     private static final long serialVersionUID = -1565255068791353538L;
+    /**
+     * 自增唯一ID
+     */
     private Long umetaId;
+
+    /**
+     * 对应用户ID
+     */
     private Long userId;
+
+    /**
+     * 键名
+     */
     private String metaKey;
+
+    /**
+     * 键值
+     */
     private String metaValue;
 
     /**

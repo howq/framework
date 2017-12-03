@@ -9,9 +9,24 @@ import java.io.Serializable;
  */
 public class TermMeta implements Serializable {
     private static final long serialVersionUID = -1322077081142835656L;
+    /**
+     * 自增唯一ID
+     */
     private Long metaId;
+
+    /**
+     * 对应分类ID
+     */
     private Long termId;
+
+    /**
+     * 键名
+     */
     private String metaKey;
+
+    /**
+     * 键值
+     */
     private String metaValue;
 
     /**
